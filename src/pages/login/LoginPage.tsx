@@ -1,10 +1,10 @@
-import { Navbar } from "../../components"
+import { LoginComponent, Navbar } from "../../components"
 
 export const LoginPage = () => {
   return (
 	<>
 	<Navbar/>
-	<div>LoginPage</div>
+	<LoginComponent />
 	</>
   )
 }
