@@ -1,27 +1,31 @@
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import axios from 'axios'; // Import axios for making HTTP requests
+import {Navigate} from 'react-router-dom';
+import {PRIVATE} from '../../config';
+import { LoginComponentStyles } from '..';
+
+const urlUsers = import.meta.env.VITE_API_USERS;
 
 export const LoginComponent = () => {
-	const [name, setName] = useState('');
-	const [password, setPassword] = useState('');
-	const navigate = useNavigate();
+	const [formData, setFormData] = useState({
+		password: '',
+        email: ''
+	});
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
-			// Make a POST request to your backend for user authentication
-			const response = await axios.get('http://localhost:8080/users', {
-				name,
-				password,
-			});
+			const response = await fetch(urlUsers)
+			const users = await response.json();
+			console.log('Server response:', users);
+            console.log('Email:', formData.email);
+            console.log('Password:', formData.password);
 
-			if (response.data.authenticated) {
-				// User is authenticated, navigate to private route
-				navigate.push('/private');
+			const foundUser = users.find((user) => user.email === formData.email && user.password === formData.password);
+
+			if (foundUser) {
+				return <Navigate to={PRIVATE} />;
 			} else {
-				// User is not authenticated, show an error
 				console.log('User not found');
 			}
 		} catch (error) {
@@ -29,32 +33,36 @@ export const LoginComponent = () => {
 		}
 	};
 
-	const handleUserChange = (e) => {
-		setName(e.target.value);
+	const handleEmailChange = (e) => {
+		const value = e.target.value;
+		setFormData((prevData) => ({...prevData, email: value}));
 	};
 
 	const handlePasswordChange = (e) => {
-		setPassword(e.target.value);
+		const value = e.target.value;
+		setFormData((prevData) => ({...prevData, password: value}));
 	};
 
 	return (
-		<div className="loginWhole">
+        <LoginComponentStyles>
+		<div className="login__whole">
 			<h1>Login Page</h1>
 			<div className="containerLogin">
-				<div className="formLogin">
 					<form onSubmit={handleSubmit}>
+				<div className="formLogin">
 						<div className="formGridLogin">
 							<div className="formItemLogin">
-								<input type="text" id="user" placeholder="Username" value={name} onChange={handleUserChange} />
+								<input type="text" id="email" placeholder="Email" value={formData.email} onChange={handleEmailChange} />
 							</div>
 							<div className="formItemLogin">
-								<input type="password" id="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+								<input type="password" id="password" placeholder="Password" value={formData.password} onChange={handlePasswordChange} />
 							</div>
-							<button type="submit">Iniciar sesión</button>
+							<button className='formGridLogin' type="submit">Iniciar sesión</button>
 						</div>
-					</form>
 				</div>
+					</form>
 			</div>
 		</div>
+        </LoginComponentStyles>
 	);
 };

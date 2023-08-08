@@ -1,25 +1,23 @@
 import styled from 'styled-components';
 
-export const LoginPageStyles = styled.div`
+export const LoginComponentStyles = styled.div`
 	.login__whole {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+        flex-direction: column;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 		border-radius: 15px;
 		padding: 20px;
 		max-width: 500px;
-		margin: 0 auto;
-		margin-bottom: 20px;
-	
-
+		margin: 50px auto 20px auto;
 	& h1 {
 		text-align: center;
 	}
 }
 
 	.formLogin {
-		max-width: 350px;
+		max-width: 650px;
 	}
 
 	.formGridLogin {
@@ -33,6 +31,7 @@ export const LoginPageStyles = styled.div`
 	}
 
 	.formGridLogin button {
+        grid-column: 1/3;
 		background-color: transparent;
 		border: 2px solid black;
 		min-width: 100px;

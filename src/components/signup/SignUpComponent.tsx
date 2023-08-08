@@ -1,5 +1,7 @@
 import {useState} from 'react';
 import { SignUpComponentStyles } from './SignUpComponent.styles';
+import { Navigate } from 'react-router-dom';
+import { PRIVATE } from '../../config';
 
 
 const urlUsers = import.meta.env.VITE_API_USERS;
@@ -32,6 +34,7 @@ export const SignUpComponent = () => {
 
 			if (response.ok) {
 				console.log('Succesfully registered!');
+                <Navigate to={PRIVATE} />
 			} else {
 				console.error('Error trying to register user');
 			}
