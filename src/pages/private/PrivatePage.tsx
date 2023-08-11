@@ -6,7 +6,7 @@ export const PrivatePage = () => {
   return (
     <>
     <Navbar />
-    <PrivateComponent />
+    {/* <PrivateComponent /> */}
     </>
   )
 }

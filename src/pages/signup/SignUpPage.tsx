@@ -1,10 +1,9 @@
-import {Navbar, SignUpComponent} from '../../components';
+import {Navbar} from '../../components';
 
 export const SignUpPage = () => {
 	return (
 		<>
 			<Navbar />
-			<SignUpComponent />
 		</>
 	);
 };

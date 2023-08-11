@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {HomePage, LoginPage, PrivatePage, SignUpPage} from '../pages';
+import {LoginPage, PrivatePage, ProfilePage, SignUpPage} from '../pages';
 import {HOME, LOGIN, PRIVATE, SIGNUP} from '../config';
 import {PrivateRoute, PublicRoute} from '../components';
 
@@ -12,7 +12,8 @@ export const RouterPaths = () => {
 				<Route path={HOME} element={<PublicRoute />}>
 					<Route path={LOGIN} element={<LoginPage />} />
 					<Route path={SIGNUP} element={<SignUpPage />} />
-					<Route path='/private' element={<PrivatePage />} />
+					<Route path='/home' element={<PrivatePage />} />
+					<Route path='/profile' element={<ProfilePage />} />
 				</Route>
 				<Route path={PRIVATE} element={<PrivateRoute />}>
 				</Route>

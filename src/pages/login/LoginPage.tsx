@@ -1,10 +1,9 @@
-import { LoginComponent, Navbar } from "../../components"
+import { Navbar } from "../../components"
 
 export const LoginPage = () => {
   return (
 	<>
 	<Navbar/>
-	<LoginComponent />
 	</>
   )
 }
