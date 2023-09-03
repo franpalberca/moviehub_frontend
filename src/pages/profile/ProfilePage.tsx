@@ -1,11 +1,10 @@
-import { Navbar, ProfileComponent } from "../../components"
-
+import {Navbar, ProfileComponent} from '../../components';
 
 export const ProfilePage = () => {
-  return (
-    <>
-    <Navbar />
-    <ProfileComponent />
-    </>
-  )
-}
+	return (
+		<>
+			<Navbar />
+			<ProfileComponent />
+		</>
+	);
+};

@@ -4,7 +4,7 @@ export const NavbarStyles = styled.div`
 	.navbar {
 		width: 100%;
 		height: 80px;
-		background-color: darkblue;
+		background-color: #050247;
 		display: flex;
 		align-items: center;
 
@@ -27,9 +27,9 @@ export const NavbarStyles = styled.div`
 			margin-right: 20px;
 
 			&__welcome {
-			   text-decoration: none;
-			   color: lightblue;
-		   }
+				text-decoration: none;
+				color: lightblue;
+			}
 		}
 
 		&__links a {
@@ -37,8 +37,12 @@ export const NavbarStyles = styled.div`
 			color: lightblue;
 			font-size: 25px;
 		}
+		&__links a.profile-link{
+			color: black;
+		}
 
-		&__divButtonSignUp {
+		&__divButtonSignUp,
+		&__divButtonProfile {
 			padding: 0px 10px;
 			height: 42px;
 			border-radius: 6px;
@@ -52,7 +56,7 @@ export const NavbarStyles = styled.div`
 			align-items: center;
 			text-align: center;
 			justify-content: center;
-			font-size: 20px;
+			font-size: 25px;
 			font-weight: 500;
 			margin: 8px;
 			flex: 1 1 0%;
