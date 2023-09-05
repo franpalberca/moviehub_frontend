@@ -1,8 +1,8 @@
 import {GetTokenSilentlyOptions} from '@auth0/auth0-react';
 import {GetTokenSilentlyVerboseResponse} from '@auth0/auth0-spa-js';
-import {VITE_URL} from '../global/serverUrl';
 
-const VITE_URL_MOVIES = `${VITE_URL}movies`;
+const urlMovies = import.meta.env.VITE_API_MOVIES;
+
 
 export const getAllMovies = async (getToken: {
 	(options: GetTokenSilentlyOptions & {detailedResponse: true}): Promise<GetTokenSilentlyVerboseResponse>;
@@ -11,7 +11,7 @@ export const getAllMovies = async (getToken: {
 }) => {
 	try {
 		const token = await getToken();
-		const response = await fetch(VITE_URL_MOVIES, {
+		const response = await fetch(urlMovies, {
 			headers: {
 				authorization: `Bearer ${token}`,
 			},

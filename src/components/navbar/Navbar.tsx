@@ -1,7 +1,8 @@
 import {Link} from 'react-router-dom';
 import {HOME, PROFILE} from '../../config';
-import {NavbarStyles} from './Navbar.styles';
+import {NavbarStyles} from './navbar.styles';
 import {useAuth0} from '@auth0/auth0-react';
+import {ModalCreationMovies} from '../modal/ModalCreationMovies';
 
 export const Navbar = () => {
 	const {loginWithRedirect, logout, user, isLoading, isAuthenticated} = useAuth0();
@@ -21,13 +22,15 @@ export const Navbar = () => {
 					<div className="navbar__links-right">
 						{isAuthenticated ? (
 							<>
-							<div className="navbar__divButtonProfile"><Link to={PROFILE} className="profile-link">+</Link>
-							</div>
-							<div className="navbar__divButtonProfile"><Link to={PROFILE} className="profile-link">Profile</Link>
-							</div>
-							<div onClick={() => logout()} className="navbar__divButtonSignUp">
-								Logout
-							</div>
+								<ModalCreationMovies />
+								<div className="navbar__divButtonProfile">
+									<Link to={PROFILE} className="profile-link">
+										Profile
+									</Link>
+								</div>
+								<div onClick={() => logout()} className="navbar__divButtonSignUp">
+									Logout
+								</div>
 							</>
 						) : (
 							<div onClick={() => loginWithRedirect()} className="navbar__divButtonSignUp">

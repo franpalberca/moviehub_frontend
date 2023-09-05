@@ -1,4 +1,4 @@
-import {VITE_URL_USERS} from '../global/serverUrl';
+const urlUsers = import.meta.env.VITE_API_USERS;
 
 export type UserProps = {
 	id: string;
@@ -9,7 +9,7 @@ export type UserProps = {
 
 export const getAllUsers = async () => {
 	try {
-		const response = await fetch(VITE_URL_USERS);
+		const response = await fetch(urlUsers);
 		const users = await response.json();
 		return users;
 	} catch (error) {
@@ -19,7 +19,7 @@ export const getAllUsers = async () => {
 
 export const getUserByID = async (id: string) => {
 	try {
-		const response = await fetch(VITE_URL_USERS + `/${id}`);
+		const response = await fetch(urlUsers + `/${id}`);
 		const userById = await response.json();
 
 		return userById;
@@ -29,7 +29,7 @@ export const getUserByID = async (id: string) => {
 };
 export const updateUserByID = async (id: string) => {
 	try {
-		const response = await fetch(VITE_URL_USERS + `/${id}`);
+		const response = await fetch(urlUsers + `/${id}`);
 		const userById = await response.json();
 
 		console.log('funciona');

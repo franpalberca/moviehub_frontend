@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {useEffect} from 'react';
 import {getDataApi} from './getDataApi';
-import {Card} from '../components/card/Card';
 import {useAuth0} from '@auth0/auth0-react';
+import { Card } from '../components/card/Card';
 
 interface MoviesType {
 	id: string;
@@ -41,9 +41,7 @@ export const GetMovies = () => {
 	}, []);
 
 	useEffect(() => {
-		// console.log(user);
 		console.log(moviesData);
-		// console.log(genres);
 	}, [moviesData]);
 
 	return (

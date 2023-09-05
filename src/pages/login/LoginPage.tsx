@@ -1,4 +1,4 @@
-import {Navbar} from '../../components';
+import {Footer, Navbar} from '../../components';
 
 export const LoginPage = () => {
 	return (
@@ -8,6 +8,7 @@ export const LoginPage = () => {
 				backgroundImage: `url("https://i.postimg.cc/xdWJMRCd/gettyimages-1145944808-custom-c4059a3b99d086477c3e91fc1058b7122431555e.jpg")`,
 				height: "100vh"
 			}}></div>
+			<Footer />
 		</>
 	);
 };

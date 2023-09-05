@@ -1,4 +1,4 @@
-import { Navbar } from "../../components"
+import { Navbar, Footer } from "../../components"
 import { PrivateComponent } from "../../components/private/PrivateComponent"
 
 
@@ -7,6 +7,7 @@ export const PrivatePage = () => {
     <>
     <Navbar />
     <PrivateComponent />
+    <Footer />
     </>
   )
 }

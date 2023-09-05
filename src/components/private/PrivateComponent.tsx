@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 
+
 const urlMovies = import.meta.env.VITE_API_MOVIES;
+
 export const PrivateComponent = () => {
 	const [movies, setMovies] = useState([]);
 
@@ -20,7 +22,7 @@ export const PrivateComponent = () => {
 
 	return (
 		<div>
-			<h1>Your Movies</h1>
+			<h1>My Movies</h1>
 			<ul>
 				{movies.map((movie) => (
 					<li key={movie._id}>
