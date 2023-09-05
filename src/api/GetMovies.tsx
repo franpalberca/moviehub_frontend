@@ -1,8 +1,8 @@
 // import {useState, useEffect} from 'react';
 // import {getDataApi} from './getDataApi';
 // import {useAuth0} from '@auth0/auth0-react';
-// import {Card} from '../components/card/Card';
-import {useUserContext} from '../context/userContext';
+// // import {Card} from '../components/card/Card';
+// import {useUserContext} from '../context/userContext';
 
 // interface MoviesType {
 // 	id: string;
@@ -28,24 +28,68 @@ import {useUserContext} from '../context/userContext';
 
 export const fetchMovies = async (url, getToken) => {
 	const token = await getToken();
-    try {
-        const response = await fetch(url, {
-            method: "GET",
-            headers: {
-                authorization: `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-        });
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error("Network response was not ok.");
-        }
-    } catch (error) {
-        console.log(error)
-    }
+	try {
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				authorization: `Bearer ${token}`,
+				'Content-Type': 'application/json',
+			},
+		});
+		if (response.ok) {
+			return response.json();
+		} else {
+			throw new Error('Network response was not ok.');
+		}
+	} catch (error) {
+		console.log(error);
+	}
 };
 
+export const updateMovie = async (url, getToken, data) => {
+	const token = await getToken();
+
+	try {
+		const response = await fetch(url, {
+			method: 'PUT',
+			headers: {
+				authorization: `Bearer ${token}`,
+				'Content-Type': 'application/json',
+			},
+			body: data,
+		});
+
+		if (response.ok) {
+			console.log('update');
+		} else {
+			throw new Error('Failed to update movie');
+		}
+	} catch (error) {
+		throw new Error('Error updating movie:', error);
+	}
+};
+
+export const deleteMovie = async (url, getToken, movieId) => {
+	const token = await getToken();
+
+	try {
+		const response = await fetch(`${url}/${movieId}`, {
+			method: 'DELETE',
+			headers: {
+				authorization: `Bearer ${token}`,
+				'Content-Type': 'application/json',
+			},
+		});
+
+		if (response.ok) {
+			console.log('delete');
+		} else {
+			throw new Error('Failed to delete movie');
+		}
+	} catch (error) {
+		throw new Error('Error deleting movie:', error);
+	}
+};
 
 // export const GetMovies = () => {
 // 	const [moviesData, setMoviesData] = useState<MoviesType[]>([]);
@@ -64,7 +108,7 @@ export const fetchMovies = async (url, getToken) => {
 // 	}, []);
 
 // 	useEffect(() => {
-// 		console.log("Movies Data Updated:", moviesData); 
+// 		console.log("Movies Data Updated:", moviesData);
 // 	}, [moviesData]);
 
 // 	return (

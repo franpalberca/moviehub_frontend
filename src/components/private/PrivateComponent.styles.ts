@@ -9,6 +9,10 @@ export const PrivateComponentStyles = styled.div`
     .movie-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr); 
-        gap: 16px; 
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        left: 50px;
     }
 `

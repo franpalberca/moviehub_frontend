@@ -7,7 +7,7 @@ export const CardStyles = styled.div`
         align-items: center;
         justify-content: flex-start;
         width: 300px;
-        height: 400px;
+        max-height: 650px;
         border-radius: 35px;
         border: 1px solid rgba(0, 0, 0, 0.8);
         background: rgba(250, 250, 250, 0.8);

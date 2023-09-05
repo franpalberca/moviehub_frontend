@@ -15,7 +15,6 @@ export const ProfileComponent = () => {
 			<img src={user?.picture} alt={user?.name} />
 			{userData && (
 				<>
-					<h3>ID from Your Database: {userData.id}</h3>
 					<h3>Name: {userData.name}</h3>
 					<h3>Email: {userData.email}</h3>
 				</>

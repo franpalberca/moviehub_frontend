@@ -20,3 +20,5 @@ export const postApi = async (url: string, data: any, getToken: any) => {
 		console.log(error);
 	}
 };
+
+
