@@ -7,7 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle"
 
 
 const {VITE_AUTH0_DOMAIN: domain, VITE_AUTH0_CLIENT_ID: clientId, VITE_AUTH0_AUDIENCE: audience} = import.meta.env
-const redirectUri = window.location.origin + '/home';
+const redirectUri = window.location.origin + '/private';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>

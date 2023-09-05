@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-
+import getMovies from '../../api/GetMovies'
 
 const urlMovies = import.meta.env.VITE_API_MOVIES;
 
@@ -7,7 +7,7 @@ export const PrivateComponent = () => {
 	const [movies, setMovies] = useState([]);
 
 	useEffect(() => {
-		async function fetchMovies() {
+		async function getMovies() {
 			try {
 				const response = await fetch(urlMovies);
 				const data = await response.json();
@@ -17,7 +17,7 @@ export const PrivateComponent = () => {
 			}
 		}
 
-		fetchMovies();
+		getMovies();
 	}, []);
 
 	return (

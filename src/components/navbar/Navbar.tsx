@@ -5,7 +5,7 @@ import {useAuth0} from '@auth0/auth0-react';
 import {ModalCreationMovies} from '../modal/ModalCreationMovies';
 
 export const Navbar = () => {
-	const {loginWithRedirect, logout, user, isLoading, isAuthenticated} = useAuth0();
+	const {loginWithRedirect, logout, user, isLoading, isAuthenticated, getAccessTokenSilently} = useAuth0();
 
 	if (isLoading) {
 		return <div>Loading...</div>;
@@ -22,7 +22,7 @@ export const Navbar = () => {
 					<div className="navbar__links-right">
 						{isAuthenticated ? (
 							<>
-								<ModalCreationMovies />
+								<ModalCreationMovies getToken={() => getAccessTokenSilently()} />
 								<div className="navbar__divButtonProfile">
 									<Link to={PROFILE} className="profile-link">
 										Profile

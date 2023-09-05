@@ -1,9 +1,9 @@
-import { RouterPaths } from "./routes/RouterPaths.routes";
+import Layout from "./layout/Layout";
 
 function App() {
 	return (
 		<>
-			<RouterPaths/>
+		<Layout />
 		</>
 	);
 }

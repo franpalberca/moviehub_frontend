@@ -1,5 +1,7 @@
+
 export const createMovie = async (urlMovies: string, movieData: FormData, getToken: any) => {
 	const token = await getToken();
+	console.log(getToken)
 
 	try {
 		const response = await fetch(urlMovies, {

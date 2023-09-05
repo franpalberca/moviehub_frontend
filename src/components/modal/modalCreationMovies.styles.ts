@@ -22,4 +22,9 @@ export const ModalCreationMoviesStyles = styled.div`
 			&hover {
 				cursor: pointer;
     }
-`
+	.genres {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+	}
+`;

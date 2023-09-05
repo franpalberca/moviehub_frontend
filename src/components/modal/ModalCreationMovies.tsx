@@ -85,14 +85,17 @@ export const ModalCreationMovies = ({getToken}: {getToken: () => Promise<string>
 							<label>Title:</label>
 							<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 						</div>
+						<br />
 						<div>
 							<label>Year:</label>
 							<input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
 						</div>
+						<br />
 						<div>
 							<label>Country:</label>
 							<input type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
 						</div>
+						<br />
 						<div>
 							<label>Rating:</label>
 							{[1, 2, 3, 4, 5].map((value) => (
@@ -107,8 +110,14 @@ export const ModalCreationMovies = ({getToken}: {getToken: () => Promise<string>
 								/>
 							))}
 						</div>
-						<div>
-							<label>Categories:</label>
+						<br />
+						<div
+							style={{
+								display: 'grid',
+								gridTemplateColumns: 'repeat(3, 1fr)',
+								gap: '10px',
+							}}>
+							<label>Genres:</label>
 							{['Action', 'Comedy', 'Terror', 'Adventure', 'Sci-Fi', 'Documentary', 'Drama', 'Fantasy', 'Musical', 'Thriller'].map((category) => (
 								<div key={category}>
 									<input type="checkbox" checked={selectedCategories.includes(category)} onChange={() => handleCategoryClick(category)} />
