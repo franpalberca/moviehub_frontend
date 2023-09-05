@@ -1,8 +1,8 @@
-import {useState} from 'react';
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {getDataApi} from './getDataApi';
 import {useAuth0} from '@auth0/auth0-react';
-import { Card } from '../components/card/Card';
+import {Card} from '../components/card/Card';
+import {useUserContext} from '../context/userContext';
 
 interface MoviesType {
 	id: string;
@@ -28,26 +28,28 @@ interface GenreType {
 
 export const GetMovies = () => {
 	const [moviesData, setMoviesData] = useState<MoviesType[]>([]);
-
-	const {getAccessTokenSilently, user} = useAuth0();
-	const url = `users/${user?.email}`;
+	const userData = useUserContext();
+	const {getAccessTokenSilently} = useAuth0();
+	const url = `${import.meta.env.VITE_API_MOVIES}/${userData?.id}`;
 
 	useEffect(() => {
+		console.log("URL:", url);
 		const fetchMovies = async () => {
 			const data = await getDataApi(url, getAccessTokenSilently);
+			console.log("Movies Data:", data);
 			setMoviesData(data.movies);
 		};
 		fetchMovies();
 	}, []);
 
 	useEffect(() => {
-		console.log(moviesData);
+		console.log("Movies Data Updated:", moviesData); 
 	}, [moviesData]);
 
 	return (
 		<>
-			{moviesData.map((movies) => (
-				<Card key={movies.id} {...movies} />
+			{moviesData.map((movie) => (
+				<Card key={movie.id} {...movie} />
 			))}
 		</>
 	);

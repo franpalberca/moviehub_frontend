@@ -19,6 +19,7 @@ export const ModalCreationMoviesStyles = styled.div`
 			font-weight: 500;
 			margin: 8px;
 			flex: 1 1 0%;
+			color: black;
 			&hover {
 				cursor: pointer;
     }

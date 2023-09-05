@@ -1,31 +1,30 @@
 import {useEffect, useState} from 'react';
-import getMovies from '../../api/GetMovies'
-
-const urlMovies = import.meta.env.VITE_API_MOVIES;
+import {useUserContext} from '../../context/userContext';
+import {GetMovies} from '../../api';
 
 export const PrivateComponent = () => {
 	const [movies, setMovies] = useState([]);
+	const userData = useUserContext();
 
 	useEffect(() => {
-		async function getMovies() {
+		async function fetchMovies() {
 			try {
-				const response = await fetch(urlMovies);
-				const data = await response.json();
-				setMovies(data);
+				const moviesData = await GetMovies();
+				setMovies(moviesData);
 			} catch (error) {
 				console.error('Error fetching movies:', error);
 			}
 		}
 
-		getMovies();
-	}, []);
+		fetchMovies();
+	}, [userData]);
 
 	return (
 		<div>
 			<h1>My Movies</h1>
 			<ul>
 				{movies.map((movie) => (
-					<li key={movie._id}>
+					<li key={movie.id}>
 						<img src={movie.picture} alt={movie.name} />
 						{movie.name}
 					</li>

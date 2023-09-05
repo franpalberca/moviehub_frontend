@@ -2,9 +2,11 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {HomePage, LoginPage, PrivatePage, ProfilePage, SignUpPage} from '../pages';
 import {HOME, LOGIN, PRIVATE, PROFILE, SIGNUP} from '../config';
 import {Navbar, PrivateRoute, PublicRoute} from '../components';
+import { UserProvider } from '../context/userContext';
 
 export const RouterPaths = () => {
 	return (
+		<UserProvider>
 		<BrowserRouter>
 		<Navbar />
 			<Routes>
@@ -19,5 +21,6 @@ export const RouterPaths = () => {
 				</Route>
 			</Routes>
 		</BrowserRouter>
+		</UserProvider>
 	);
 };

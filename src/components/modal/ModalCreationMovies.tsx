@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import { useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import {ModalCreationMoviesStyles} from './modalCreationMovies.styles';
 import {createMovie} from '../../api';
+import {useAuth0} from '@auth0/auth0-react'
+import { useUserContext } from '../../context/userContext';
 
 const urlMovies = import.meta.env.VITE_API_MOVIES;
 
@@ -32,6 +34,9 @@ export const ModalCreationMovies = ({getToken}: {getToken: () => Promise<string>
 		}
 	};
 
+	const userData = useUserContext();
+
+
 	const handleAcceptClick = async () => {
 		try {
 			const movieData = new FormData();
@@ -44,7 +49,7 @@ export const ModalCreationMovies = ({getToken}: {getToken: () => Promise<string>
 				movieData.append('image', selectedFile);
 			}
 
-			const response = await createMovie(urlMovies, movieData, getToken);
+			const response = await createMovie(`${urlMovies}/${userData?.id}`, movieData, getToken);
 
 			console.log('Movie created successfully', response);
 
