@@ -7,8 +7,7 @@ export const FooterStyles = styled.div`
     background-color: #c6dbc0;
     display: flex;
     align-items: center;
-    position: fixed;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     &__links {
         width: 100%;
@@ -29,6 +28,7 @@ export const FooterStyles = styled.div`
         display: flex;
         align-items: center;
         margin-right: 50vh;
-
+    }
+}
 
 `

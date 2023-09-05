@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import {useUserContext} from '../../context/userContext';
 import {fetchMovies} from '../../api';
 import {useAuth0} from '@auth0/auth0-react';
+import {Card} from '../card/Card';
+import { PrivateComponentStyles } from '..';
 
 export const PrivateComponent = () => {
 	const urlMovies = import.meta.env.VITE_API_MOVIES;
@@ -30,16 +32,15 @@ export const PrivateComponent = () => {
 	}, [movies]);
 
 	return (
-		<div>
-			<h1>My Movies</h1>
-			<ul>
+		<PrivateComponentStyles>
+		<>
+			<h1 className='title'>My Movies</h1>
+			<div className="movie-grid">
 				{movies.map((movie) => (
-					<li key={movie.id}>
-						<img src={movie.imageUrl} alt={movie.title} />
-						{movie.title}
-					</li>
+					<Card key={movie.id} imageUrl={movie.imageUrl} title={movie.title} country={movie.country} year={movie.year} score={movie.score} genresArray={movie.genresArray} />
 				))}
-			</ul>
-		</div>
+			</div>
+		</>
+		</PrivateComponentStyles>
 	);
 };
